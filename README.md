@@ -3,7 +3,7 @@
 # NPU Thesis Expert Skill 使用说明
 
 它用于帮助处理西北工业大学 `nwputhesis` / NPU LaTeX 论文模板相关任务，包括论文写作、格式检查、参考文献、图片表格、XeLaTeX/Biber 编译和常见错误排查。
-
+如果你感觉这个项目有用，请 Star 支持。
 ## 1. Skill 文件结构
 
 ```text
@@ -31,11 +31,6 @@ description: "西北工业大学本硕博论文 LaTeX 专家。用于 NwpuThesis
 https://github.com/1195343015/nwputhesis
 ```
 
-本项目模板说明文件位于：
-
-```text
-latex论文格式/README.md
-```
 
 其中包含上游仓库、Release、TeX Live、GPL v3 许可证，以及西北工业大学研究生/本科论文规范依据等信息。后续使用 `npu-thesis-expert` 排查模板行为时，应优先以本地 `latex论文格式/` 的实际文件为准；只有在需要核对模板来源、版本变化或上游说明时，再参考 `1195343015/nwputhesis`。
 
@@ -62,7 +57,7 @@ Cursor 通常会自动扫描当前工作区下的：
 3. 重新打开 `D:\skills` 工作区。
 4. 在对话中明确说：`使用 npu-thesis-expert skill 帮我检查 NPU 论文模板编译问题`。
 
-## 3. 个人级 Skill 与项目级 Skill 的区别
+## 4. 个人级 Skill 与项目级 Skill 的区别
 
 项目级 skill：
 
@@ -76,11 +71,6 @@ Cursor 通常会自动扫描当前工作区下的：
 - 可以随项目一起提交和共享。
 - 适合本仓库的 NPU 论文模板工作流。
 
-个人级 skill：
-
-```text
-C:\Users\26941\.cursor\skills\npu-thesis-expert\SKILL.md
-```
 
 特点：
 
@@ -88,15 +78,10 @@ C:\Users\26941\.cursor\skills\npu-thesis-expert\SKILL.md
 - 适合长期复用的个人工作流。
 - 不会自动随项目仓库共享。
 
-注意：不要把自定义 skill 放到：
-
-```text
-C:\Users\26941\.cursor\skills-cursor\
-```
 
 该目录通常是 Cursor 内置 skills 的位置，不建议手动修改。
 
-## 4. 如何触发这个 Skill
+## 6. 如何触发这个 Skill
 
 推荐提问方式：
 
@@ -128,37 +113,11 @@ C:\Users\26941\.cursor\skills-cursor\
 - 引用问号
 - 论文格式
 
-## 5. 后续是否还需要 `@latex论文格式`？
 
-一般情况下：**不一定需要每次都 `@latex论文格式`**。
 
-原因是 skill 已经记录了本仓库的模板位置和常用路径，例如：
 
-```text
-latex论文格式/
-latex论文格式/bachelor.tex
-latex论文格式/content/thesis/undergraduate/reference.bib
-latex论文格式/content/thesis/graduate/reference.bib
-```
 
-但在以下情况，建议继续使用 `@latex论文格式` 或直接 `@` 具体文件：
-
-1. 你希望 Cursor 明确把整个模板目录作为上下文。
-2. 你刚刚新增、移动或重命名了模板目录。
-3. 你同时有多个 LaTeX 模板目录，担心 Cursor 选错。
-4. 你要让 Cursor 修改某个具体文件，例如：
-   - `@latex论文格式/content/thesis/undergraduate/chapter1.tex`
-   - `@latex论文格式/content/thesis/undergraduate/reference.bib`
-   - `@latex论文格式/thesis-body.tex`
-5. 你询问 PDF 当前显示内容、日志片段或某个具体报错时，最好同时 `@` 日志文件或终端输出。
-
-推荐习惯：
-
-- 普通问题：不用 `@latex论文格式`，直接问即可。
-- 涉及修改文件：最好 `@` 具体文件。
-- 涉及全局结构/编译排查：可以 `@latex论文格式`。
-
-## 6. 参考文献不显示的标准排查流程
+## 7. 参考文献不显示的标准排查流程
 
 当 PDF 中没有“参考文献”章节时，按以下顺序排查：
 
@@ -192,49 +151,12 @@ Latexmk: Bibliography file(s) from .bcf file:
   content/thesis/undergraduate/reference.bib
 ```
 
-## 7. Windows 下 PDF 被占用的处理流程
-
-如果日志出现：
-
-```text
-xdvipdfmx:fatal: Unable to open "bachelor.pdf".
-No output PDF file written.
-```
-
-说明最终 PDF 没有成功写出，常见原因是 `bachelor.pdf` 正在被 Cursor PDF 预览器或外部 PDF 阅读器占用。
-
-处理步骤：
-
-1. 关闭 Cursor/VS Code 中打开的 `bachelor.pdf` 预览标签页。
-2. 关闭外部 PDF 阅读器中打开的 `bachelor.pdf`。
-3. 删除旧的 `bachelor.pdf`。
-4. 清理并重新编译：
-
-```bash
-latexmk -C bachelor.tex
-latexmk -xelatex bachelor.tex
-```
-
-如果 `latexmk` 提示：
-
-```text
-Latexmk: Nothing to do for 'bachelor.tex'.
-Collected error summary:
-  xdvipdfmx: gave an error in previous invocation of latexmk.
-```
-
-通常是上一次失败状态被记录了。清理后重新编译即可。
-
-临时替代方案是换一个输出名：
-
-```bash
-xelatex -jobname=bachelor-new bachelor.tex
-biber bachelor-new
-xelatex -jobname=bachelor-new bachelor.tex
-xelatex -jobname=bachelor-new bachelor.tex
-```
-
 ## 8. 建议的日常使用方式
+框架搭建：
+
+```text
+根据我的代码和初稿，帮助我生成一篇npu论文（仅供参考）
+```
 
 写作修改：
 
