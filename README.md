@@ -7,7 +7,7 @@
 ## 1. Skill 文件结构
 
 ```text
-.cursor/skills/npu-thesis-expert/
+skills/npu-thesis-expert/
 ├── SKILL.md              # 必需：Cursor 识别 skill 的主文件
 ├── README.md             # 本说明文件
 ├── latex-cheatsheet.md   # NwpuThesis 常用路径、命令和写法速查
