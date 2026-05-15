@@ -1,9 +1,9 @@
 # npu-thesis-expert
-`npu-thesis-expert`，它用于帮助处理西北工业大学 `nwputhesis` / NPU LaTeX 论文模板和框架相关任务
+`npu-thesis-expert`，它用于帮助处理西北工业大学 `nwputhesis` / NPU LaTeX 论文模板和框架相关任务，如果你感觉这个项目有用，请 Star 支持。
 # NPU Thesis Expert Skill 使用说明
 
 它用于帮助处理西北工业大学 `nwputhesis` / NPU LaTeX 论文模板相关任务，包括论文写作、格式检查、参考文献、图片表格、XeLaTeX/Biber 编译和常见错误排查。
-如果你感觉这个项目有用，请 Star 支持。
+
 ## 1. Skill 文件结构
 
 ```text
